@@ -26,7 +26,7 @@
   .nav-inner{display:flex;align-items:center;justify-content:space-between;height:64px;max-width:1100px;margin:0 auto}
   .logo{font-size:22px;font-weight:900;letter-spacing:2px;color:var(--accent);text-decoration:none}
   .logo span{color:var(--text)}
-  .nav-links{display:flex;gap:32px;list-style:none}
+  .nav-links{display:flex;gap:28px;list-style:none}
   .nav-links a{color:var(--muted);text-decoration:none;font-size:14px;font-weight:500;transition:color .2s}
   .nav-links a:hover{color:var(--accent)}
   .nav-cta{background:var(--accent);color:#000;padding:9px 22px;border-radius:8px;font-weight:700;font-size:13px;text-decoration:none;transition:opacity .2s}
@@ -73,6 +73,36 @@
   .service-card p{color:var(--muted);font-size:14px;line-height:1.6}
   .service-tag{display:inline-block;margin-top:16px;font-size:11px;font-weight:700;letter-spacing:1px;color:var(--accent);text-transform:uppercase}
 
+  /* VENTE NEUF/OCCASION */
+  .vente-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+  .vente-card{background:var(--card);border:1px solid var(--border);border-radius:18px;padding:36px;position:relative;overflow:hidden;transition:border-color .2s,transform .2s}
+  .vente-card:hover{border-color:var(--accent);transform:translateY(-4px)}
+  .vente-badge{display:inline-block;font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:5px 14px;border-radius:100px;margin-bottom:20px}
+  .vente-badge.neuf{background:rgba(0,229,255,.12);color:var(--accent);border:1px solid rgba(0,229,255,.3)}
+  .vente-badge.occasion{background:rgba(124,58,237,.12);color:#a78bfa;border:1px solid rgba(124,58,237,.3)}
+  .vente-card h3{font-size:22px;font-weight:800;margin-bottom:12px}
+  .vente-card p{color:var(--muted);font-size:14px;line-height:1.7;margin-bottom:24px}
+  .vente-list{list-style:none;display:flex;flex-direction:column;gap:10px;margin-bottom:28px}
+  .vente-list li{display:flex;align-items:center;gap:10px;font-size:13.5px;color:var(--text)}
+  .vente-list li::before{content:'✓';color:var(--accent);font-weight:700}
+  .vente-card .btn-small{display:inline-block;background:var(--accent);color:#000;padding:11px 24px;border-radius:8px;font-weight:700;font-size:13.5px;text-decoration:none;transition:opacity .2s}
+  .vente-card .btn-small:hover{opacity:.85}
+
+  /* REPRISE */
+  .reprise-bg{background:var(--bg2)}
+  .reprise-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
+  .reprise-text h2{font-size:clamp(26px,3.5vw,38px);font-weight:800;margin-bottom:18px}
+  .reprise-text p{color:var(--muted);font-size:15px;line-height:1.75;margin-bottom:28px}
+  .reprise-steps{display:flex;flex-direction:column;gap:18px;margin-bottom:32px}
+  .reprise-step{display:flex;gap:14px;align-items:flex-start}
+  .reprise-step-num{flex-shrink:0;width:32px;height:32px;border-radius:50%;background:rgba(0,229,255,.12);border:1px solid rgba(0,229,255,.3);color:var(--accent);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:14px}
+  .reprise-step-text strong{display:block;font-size:14.5px;margin-bottom:3px}
+  .reprise-step-text span{color:var(--muted);font-size:13.5px}
+  .reprise-form{background:var(--card);border:1px solid var(--border);border-radius:18px;padding:32px}
+  .reprise-form h3{font-size:18px;font-weight:700;margin-bottom:6px}
+  .reprise-form .form-note{color:var(--muted);font-size:13px;margin-bottom:24px}
+  .form-row2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+
   /* POURQUOI NOUS */
   .features-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:24px}
   .feature{display:flex;gap:16px;align-items:flex-start}
@@ -103,6 +133,10 @@
   .form-submit{width:100%;background:var(--accent);color:#000;border:none;padding:14px;border-radius:10px;font-weight:700;font-size:15px;cursor:pointer;transition:opacity .2s}
   .form-submit:hover{opacity:.85}
 
+  /* REPRISE FORM TOGGLE */
+  #repriseFields{display:none}
+  #repriseFields.active{display:block}
+
   /* FOOTER */
   footer{background:var(--bg2);border-top:1px solid var(--border);padding:40px 5%;text-align:center}
   .footer-logo{font-size:20px;font-weight:900;letter-spacing:2px;color:var(--accent);margin-bottom:8px}
@@ -112,11 +146,14 @@
   /* RESPONSIVE */
   @media(max-width:900px){
     .contact-grid{grid-template-columns:1fr}
+    .vente-grid{grid-template-columns:1fr}
+    .reprise-grid{grid-template-columns:1fr}
   }
   @media(max-width:700px){
     .nav-links{display:none}
     .stats{grid-template-columns:1fr}
     .hero h1{font-size:36px}
+    .form-row2{grid-template-columns:1fr}
   }
 </style>
 </head>
@@ -128,6 +165,8 @@
     <a class="logo" href="#">WM<span> INFO</span></a>
     <ul class="nav-links">
       <li><a href="#services">Services</a></li>
+      <li><a href="#vente">Vente</a></li>
+      <li><a href="#reprise">Reprise</a></li>
       <li><a href="#pourquoi">Pourquoi nous</a></li>
       <li><a href="#marques">Marques</a></li>
       <li><a href="#contact">Contact</a></li>
@@ -143,7 +182,7 @@
   <div class="hero-content">
     <div class="hero-badge">⚡ Experts en High-Tech</div>
     <h1>Votre spécialiste<br><span class="accent">réparation & vente</span><br>en informatique</h1>
-    <p>Téléphones, ordinateurs, tablettes — nous réparons, vendons et débloquons tous vos appareils. Rapidement. Efficacement.</p>
+    <p>Téléphones, ordinateurs, tablettes — nous réparons, vendons, reprenons et débloquons tous vos appareils. Rapidement. Efficacement.</p>
     <div class="hero-btns">
       <a class="btn-primary" href="#contact">Déposer un appareil</a>
       <a class="btn-secondary" href="#services">Voir nos services</a>
@@ -192,6 +231,12 @@
         <div class="service-tag">Garantie incluse</div>
       </div>
       <div class="service-card">
+        <div class="service-icon">💰</div>
+        <h3>Reprise de téléphones</h3>
+        <p>Nous rachetons votre ancien téléphone au meilleur prix, peu importe son état.</p>
+        <div class="service-tag">Estimation gratuite</div>
+      </div>
+      <div class="service-card">
         <div class="service-icon">🎧</div>
         <h3>Accessoires & coques</h3>
         <p>Coques, protège-écrans, câbles, chargeurs, écouteurs — tout ce qu'il vous faut.</p>
@@ -202,6 +247,150 @@
         <h3>Déblocage & flash</h3>
         <p>Déblocage réseau, réinitialisation, flash ROM — votre appareil retrouve toute sa liberté.</p>
         <div class="service-tag">Rapide & sécurisé</div>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🔧</div>
+        <h3>Maintenance informatique</h3>
+        <p>Entretien régulier, mises à jour, sauvegarde, sécurité — nous assurons la longévité de vos équipements.</p>
+        <div class="service-tag">Particuliers & pros</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VENTE NEUF / OCCASION -->
+<section id="vente">
+  <div class="section-inner">
+    <div class="section-tag">Vente de téléphones</div>
+    <h2 class="section-title">Neuf ou occasion, à vous de choisir</h2>
+    <p class="section-sub">Nous proposons une large gamme de smartphones neufs et reconditionnés pour tous les budgets.</p>
+    <div class="vente-grid">
+      <div class="vente-card">
+        <span class="vente-badge neuf">Neuf</span>
+        <h3>Téléphones neufs</h3>
+        <p>Les derniers modèles, encore sous emballage d'origine, avec garantie constructeur complète.</p>
+        <ul class="vente-list">
+          <li>Garantie constructeur</li>
+          <li>Derniers modèles disponibles</li>
+          <li>Accessoires d'origine inclus</li>
+        </ul>
+        <a class="btn-small" href="#contact">Voir la disponibilité</a>
+      </div>
+      <div class="vente-card">
+        <span class="vente-badge occasion">Occasion</span>
+        <h3>Téléphones reconditionnés</h3>
+        <p>Des appareils d'occasion testés, vérifiés et remis en état pour un excellent rapport qualité-prix.</p>
+        <ul class="vente-list">
+          <li>Testé et vérifié avant la vente</li>
+          <li>Garantie incluse</li>
+          <li>Prix réduit par rapport au neuf</li>
+        </ul>
+        <a class="btn-small" href="#contact">Voir la disponibilité</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- REPRISE -->
+<section class="reprise-bg" id="reprise">
+  <div class="section-inner">
+    <div class="section-tag">Reprise de téléphones</div>
+    <h2 class="section-title" style="margin-bottom:56px">Vendez-nous votre ancien téléphone</h2>
+    <div class="reprise-grid">
+      <div class="reprise-text">
+        <h2>Comment ça marche ?</h2>
+        <p>Que votre téléphone soit en parfait état ou un peu usé, nous vous proposons une estimation gratuite et un rachat rapide.</p>
+        <div class="reprise-steps">
+          <div class="reprise-step">
+            <div class="reprise-step-num">1</div>
+            <div class="reprise-step-text">
+              <strong>Décrivez votre appareil</strong>
+              <span>Marque, modèle, capacité et état général via notre formulaire de devis.</span>
+            </div>
+          </div>
+          <div class="reprise-step">
+            <div class="reprise-step-num">2</div>
+            <div class="reprise-step-text">
+              <strong>Recevez une estimation</strong>
+              <span>Nous vous donnons une fourchette de prix sous 24h, sans engagement.</span>
+            </div>
+          </div>
+          <div class="reprise-step">
+            <div class="reprise-step-num">3</div>
+            <div class="reprise-step-text">
+              <strong>Validez et soyez payé</strong>
+              <span>Déposez l'appareil en magasin, vérification finale, et paiement immédiat.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="reprise-form">
+        <h3>Demande de devis de reprise</h3>
+        <p class="form-note">Remplissez ce formulaire pour obtenir une estimation gratuite de votre appareil.</p>
+        <div class="form-row2">
+          <div class="form-group">
+            <label>Marque</label>
+            <select>
+              <option value="">Sélectionner</option>
+              <option>Apple</option>
+              <option>Samsung</option>
+              <option>Huawei</option>
+              <option>Xiaomi</option>
+              <option>Oppo</option>
+              <option>OnePlus</option>
+              <option>Sony</option>
+              <option>Google</option>
+              <option>Autre</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Modèle</label>
+            <input type="text" placeholder="Ex : iPhone 13 Pro">
+          </div>
+        </div>
+        <div class="form-row2">
+          <div class="form-group">
+            <label>Capacité de stockage</label>
+            <select>
+              <option value="">Sélectionner</option>
+              <option>32 Go</option>
+              <option>64 Go</option>
+              <option>128 Go</option>
+              <option>256 Go</option>
+              <option>512 Go</option>
+              <option>1 To</option>
+              <option>Je ne sais pas</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>État de la batterie</label>
+            <select>
+              <option value="">Sélectionner</option>
+              <option>Excellent (90-100%)</option>
+              <option>Bon (80-89%)</option>
+              <option>Moyen (70-79%)</option>
+              <option>Faible (moins de 70%)</option>
+              <option>Je ne sais pas</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>État général de l'appareil</label>
+          <select>
+            <option value="">Sélectionner</option>
+            <option>Comme neuf (aucune trace)</option>
+            <option>Très bon état (légères traces d'usure)</option>
+            <option>Bon état (rayures visibles)</option>
+            <option>Écran fissuré / cassé</option>
+            <option>Ne s'allume plus</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Vos coordonnées</label>
+          <input type="text" placeholder="Nom et téléphone" style="margin-bottom:10px">
+          <textarea placeholder="Précisions supplémentaires sur l'état de l'appareil (optionnel)"></textarea>
+        </div>
+        <button class="form-submit" onclick="alert('Demande de devis envoyée ! Nous vous recontactons sous 24h avec une estimation.')">Recevoir mon estimation</button>
       </div>
     </div>
   </div>
@@ -337,19 +526,58 @@
         </div>
         <div class="form-group">
           <label>Type de demande</label>
-          <select>
+          <select id="demandeType" onchange="document.getElementById('repriseFields').className = this.value==='Reprise de téléphone' ? 'form-group active' : 'form-group'; document.getElementById('repriseFields').style.display = this.value==='Reprise de téléphone' ? 'block' : 'none';">
             <option>Réparation téléphone</option>
             <option>Réparation ordinateur</option>
             <option>Réparation tablette</option>
-            <option>Achat / vente</option>
+            <option>Maintenance informatique</option>
+            <option>Achat téléphone neuf</option>
+            <option>Achat téléphone occasion</option>
+            <option>Reprise de téléphone</option>
             <option>Déblocage / flash</option>
             <option>Accessoires</option>
             <option>Autre</option>
           </select>
         </div>
+        <div id="repriseFields">
+          <div class="form-row2">
+            <div class="form-group">
+              <label>Marque du téléphone</label>
+              <input type="text" placeholder="Ex : Apple, Samsung...">
+            </div>
+            <div class="form-group">
+              <label>Modèle</label>
+              <input type="text" placeholder="Ex : iPhone 13 Pro">
+            </div>
+          </div>
+          <div class="form-row2">
+            <div class="form-group">
+              <label>Capacité</label>
+              <select>
+                <option value="">Sélectionner</option>
+                <option>32 Go</option>
+                <option>64 Go</option>
+                <option>128 Go</option>
+                <option>256 Go</option>
+                <option>512 Go</option>
+                <option>1 To</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>État batterie</label>
+              <select>
+                <option value="">Sélectionner</option>
+                <option>Excellent (90-100%)</option>
+                <option>Bon (80-89%)</option>
+                <option>Moyen (70-79%)</option>
+                <option>Faible (moins de 70%)</option>
+              </select>
+            </div>
+          </div>
+        </div>
         <div class="form-group">
           <label>Message</label>
-          <textarea placeholder="Décrivez votre appareil et le problème rencontré..."></textarea>
+          <textarea placeholder="Décrivez votre appareil et le problème rencontré, ou l'état de l'appareil pour une reprise..."></textarea>
         </div>
         <button class="form-submit" onclick="alert('Message envoyé ! Nous vous répondons sous 24h.')">Envoyer ma demande</button>
       </div>
@@ -360,7 +588,7 @@
 <!-- FOOTER -->
 <footer>
   <div class="footer-logo">WM<span> INFO</span></div>
-  <p style="margin-top:8px">Votre expert en réparation & vente de téléphones, ordinateurs et tablettes</p>
+  <p style="margin-top:8px">Votre expert en réparation, vente et reprise de téléphones, ordinateurs et tablettes</p>
   <p style="margin-top:12px;font-size:12px">© 2025 WM INFO – Tous droits réservés</p>
 </footer>
 
