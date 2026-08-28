@@ -63,15 +63,83 @@
   .section-title{font-size:clamp(28px,4vw,44px);font-weight:800;margin-bottom:16px}
   .section-sub{color:var(--muted);font-size:16px;max-width:520px;line-height:1.7;margin-bottom:56px}
 
-  /* SERVICES */
+  /* ── SERVICES REFAIT ── */
   .services-bg{background:var(--bg2)}
-  .services-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:20px}
-  .service-card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:32px 24px;transition:border-color .2s,transform .2s;cursor:default}
-  .service-card:hover{border-color:var(--accent);transform:translateY(-4px)}
-  .service-icon{font-size:36px;margin-bottom:20px}
-  .service-card h3{font-size:17px;font-weight:700;margin-bottom:10px}
-  .service-card p{color:var(--muted);font-size:14px;line-height:1.6}
-  .service-tag{display:inline-block;margin-top:16px;font-size:11px;font-weight:700;letter-spacing:1px;color:var(--accent);text-transform:uppercase}
+
+  .srv-layout{display:grid;grid-template-columns:280px 1fr;gap:0;border:1px solid var(--border);border-radius:16px;overflow:hidden}
+
+  /* Colonne gauche — liste de navigation */
+  .srv-nav{background:var(--bg3);border-right:1px solid var(--border)}
+  .srv-nav-item{
+    display:flex;align-items:center;justify-content:space-between;
+    padding:18px 22px;
+    border-bottom:1px solid var(--border);
+    cursor:pointer;
+    transition:background .2s;
+    gap:12px;
+  }
+  .srv-nav-item:last-child{border-bottom:none}
+  .srv-nav-item:hover{background:rgba(0,229,255,.04)}
+  .srv-nav-item.active{background:rgba(0,229,255,.07);border-left:2px solid var(--accent)}
+  .srv-nav-label{font-size:13.5px;font-weight:600;color:var(--muted);transition:color .2s}
+  .srv-nav-item.active .srv-nav-label{color:var(--text)}
+  .srv-nav-item:hover .srv-nav-label{color:var(--text)}
+  .srv-nav-arrow{font-size:11px;color:var(--border);transition:color .2s}
+  .srv-nav-item.active .srv-nav-arrow{color:var(--accent)}
+
+  /* Colonne droite — détail */
+  .srv-detail{background:var(--card);display:none;flex-direction:column;gap:0}
+  .srv-detail.active{display:flex}
+
+  .srv-detail-header{
+    padding:32px 36px 24px;
+    border-bottom:1px solid var(--border);
+  }
+  .srv-detail-tag{
+    font-size:11px;font-weight:700;letter-spacing:2px;
+    text-transform:uppercase;color:var(--accent);margin-bottom:10px;
+  }
+  .srv-detail-title{font-size:22px;font-weight:800;color:var(--text);margin-bottom:8px}
+  .srv-detail-desc{font-size:14px;color:var(--muted);line-height:1.75;max-width:500px}
+
+  .srv-detail-body{padding:28px 36px;display:flex;flex-direction:column;gap:20px}
+
+  .srv-points{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+  .srv-point{
+    display:flex;align-items:flex-start;gap:10px;
+    background:rgba(0,229,255,.03);
+    border:1px solid var(--border);
+    border-radius:10px;
+    padding:14px 16px;
+  }
+  .srv-point-dot{
+    width:6px;height:6px;border-radius:50%;
+    background:var(--accent);flex-shrink:0;margin-top:6px;
+  }
+  .srv-point-text{font-size:13px;color:var(--muted);line-height:1.5}
+  .srv-point-text strong{display:block;font-size:13.5px;font-weight:600;color:var(--text);margin-bottom:2px}
+
+  .srv-detail-footer{
+    padding:20px 36px 28px;
+    display:flex;align-items:center;justify-content:space-between;
+    gap:16px;flex-wrap:wrap;
+  }
+  .srv-badge-row{display:flex;gap:8px;flex-wrap:wrap}
+  .srv-badge{
+    font-size:11px;font-weight:700;letter-spacing:1px;
+    text-transform:uppercase;
+    padding:5px 12px;border-radius:100px;
+    background:rgba(0,229,255,.08);
+    border:1px solid rgba(0,229,255,.2);
+    color:var(--accent);
+  }
+  .srv-cta{
+    background:var(--accent);color:#000;
+    padding:11px 24px;border-radius:8px;
+    font-weight:700;font-size:13px;
+    text-decoration:none;transition:opacity .2s;white-space:nowrap;
+  }
+  .srv-cta:hover{opacity:.85}
 
   /* VENTE NEUF/OCCASION */
   .vente-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px}
@@ -132,10 +200,7 @@
   .form-group textarea{resize:vertical;min-height:100px}
   .form-submit{width:100%;background:var(--accent);color:#000;border:none;padding:14px;border-radius:10px;font-weight:700;font-size:15px;cursor:pointer;transition:opacity .2s}
   .form-submit:hover{opacity:.85}
-
-  /* REPRISE FORM TOGGLE */
   #repriseFields{display:none}
-  #repriseFields.active{display:block}
 
   /* FOOTER */
   footer{background:var(--bg2);border-top:1px solid var(--border);padding:40px 5%;text-align:center}
@@ -143,11 +208,11 @@
   .footer-logo span{color:var(--text)}
   footer p{color:var(--muted);font-size:13px}
 
-  /* RESPONSIVE */
   @media(max-width:900px){
-    .contact-grid{grid-template-columns:1fr}
-    .vente-grid{grid-template-columns:1fr}
-    .reprise-grid{grid-template-columns:1fr}
+    .contact-grid,.vente-grid,.reprise-grid{grid-template-columns:1fr}
+    .srv-layout{grid-template-columns:1fr}
+    .srv-nav{border-right:none;border-bottom:1px solid var(--border)}
+    .srv-points{grid-template-columns:1fr}
   }
   @media(max-width:700px){
     .nav-links{display:none}
@@ -159,7 +224,6 @@
 </head>
 <body>
 
-<!-- NAVIGATION -->
 <nav>
   <div class="nav-inner">
     <a class="logo" href="#">WM<span> INFO</span></a>
@@ -175,12 +239,11 @@
   </div>
 </nav>
 
-<!-- HERO -->
 <section class="hero">
   <div class="hero-bg"></div>
   <div class="hero-grid"></div>
   <div class="hero-content">
-    <div class="hero-badge">⚡ Experts en High-Tech</div>
+    <div class="hero-badge">Experts en High-Tech</div>
     <h1>Votre spécialiste<br><span class="accent">réparation & vente</span><br>en informatique</h1>
     <p>Téléphones, ordinateurs, tablettes — nous réparons, vendons, reprenons et débloquons tous vos appareils. Rapidement. Efficacement.</p>
     <div class="hero-btns">
@@ -190,7 +253,6 @@
   </div>
 </section>
 
-<!-- STATS -->
 <div class="stats-wrap">
   <div class="stats">
     <div class="stat"><div class="stat-num">500+</div><div class="stat-label">Appareils réparés</div></div>
@@ -199,76 +261,226 @@
   </div>
 </div>
 
-<!-- SERVICES -->
+<!-- ── SERVICES REFAIT ── -->
 <section class="services-bg" id="services">
   <div class="section-inner">
     <div class="section-tag">Nos services</div>
     <h2 class="section-title">Tout pour vos appareils</h2>
-    <p class="section-sub">Des solutions complètes pour particuliers et professionnels.</p>
-    <div class="services-grid">
-      <div class="service-card">
-        <div class="service-icon">📱</div>
-        <h3>Réparation téléphones</h3>
-        <p>Écran cassé, batterie défaillante, caméra, connecteur — diagnostic offert et réparation rapide.</p>
-        <div class="service-tag">Diagnostic gratuit</div>
+    <p class="section-sub">Sélectionnez un service pour en savoir plus.</p>
+
+    <div class="srv-layout">
+      <!-- Colonne navigation -->
+      <div class="srv-nav">
+        <div class="srv-nav-item active" onclick="showSrv(0)">
+          <span class="srv-nav-label">Réparation téléphones</span>
+          <span class="srv-nav-arrow">›</span>
+        </div>
+        <div class="srv-nav-item" onclick="showSrv(1)">
+          <span class="srv-nav-label">Réparation ordinateurs</span>
+          <span class="srv-nav-arrow">›</span>
+        </div>
+        <div class="srv-nav-item" onclick="showSrv(2)">
+          <span class="srv-nav-label">Réparation tablettes</span>
+          <span class="srv-nav-arrow">›</span>
+        </div>
+        <div class="srv-nav-item" onclick="showSrv(3)">
+          <span class="srv-nav-label">Vente de téléphones</span>
+          <span class="srv-nav-arrow">›</span>
+        </div>
+        <div class="srv-nav-item" onclick="showSrv(4)">
+          <span class="srv-nav-label">Reprise de téléphones</span>
+          <span class="srv-nav-arrow">›</span>
+        </div>
+        <div class="srv-nav-item" onclick="showSrv(5)">
+          <span class="srv-nav-label">Accessoires & coques</span>
+          <span class="srv-nav-arrow">›</span>
+        </div>
+        <div class="srv-nav-item" onclick="showSrv(6)">
+          <span class="srv-nav-label">Déblocage & flash</span>
+          <span class="srv-nav-arrow">›</span>
+        </div>
+        <div class="srv-nav-item" onclick="showSrv(7)">
+          <span class="srv-nav-label">Maintenance informatique</span>
+          <span class="srv-nav-arrow">›</span>
+        </div>
       </div>
-      <div class="service-card">
-        <div class="service-icon">💻</div>
-        <h3>Réparation ordinateurs</h3>
-        <p>PC portable ou fixe, Mac — dépannage matériel et logiciel, nettoyage, optimisation.</p>
-        <div class="service-tag">Tous modèles</div>
+
+      <!-- Colonne détail — un bloc par service -->
+      <div class="srv-detail active" id="srv-0">
+        <div class="srv-detail-header">
+          <div class="srv-detail-tag">Service 01</div>
+          <div class="srv-detail-title">Réparation de téléphones</div>
+          <div class="srv-detail-desc">Diagnostic offert sur tous les modèles. Nous intervenons sur l'écran, la batterie, la caméra, le connecteur de charge et tout problème matériel ou logiciel.</div>
+        </div>
+        <div class="srv-detail-body">
+          <div class="srv-points">
+            <div class="srv-point"><div class="srv-point-dot"></div><div class="srv-point-text"><strong>Remplacement d'écran</strong>Écrans d'origine ou haute qualité, posés sur place.</div></div>
+            <div class="srv-point"><div class="srv-point-dot"></div><div class="srv-point-text"><strong>Changement de batterie</strong>Autonomie retrouvée en moins d'une heure.</div></div>
+            <div class="srv-point"><div class="srv-point-dot"></div><div class="srv-point-text"><strong>Connecteur de charge</strong>Micro-USB, USB-C, Lightning — tous types.</div></div>
+            <div class="srv-point"><div class="srv-point-dot"></div><div class="srv-point-text"><strong>Caméra & haut-parleur</strong>Remplacement et recalibration inclus.</div></div>
+          </div>
+        </div>
+        <div class="srv-detail-footer">
+          <div class="srv-badge-row"><span class="srv-badge">Diagnostic gratuit</span><span class="srv-badge">Toutes marques</span><span class="srv-badge">Résultat en 1h</span></div>
+          <a class="srv-cta" href="#contact">Prendre rendez-vous</a>
+        </div>
       </div>
-      <div class="service-card">
-        <div class="service-icon">📲</div>
-        <h3>Réparation tablettes</h3>
-        <p>iPad, Samsung, Huawei et autres — remplacement d'écran, batterie, boutons et plus.</p>
-        <div class="service-tag">Toutes marques</div>
+
+      <div class="srv-detail" id="srv-1">
+        <div class="srv-detail-header">
+          <div class="srv-detail-tag">Service 02</div>
+          <div class="srv-detail-title">Réparation d'ordinateurs</div>
+          <div class="srv-detail-desc">PC portable, PC fixe ou Mac — dépannage matériel et logiciel, nettoyage, optimisation et remise en état complète.</div>
+        </div>
+        <div class="srv-detail-body">
+          <div class="srv-points">
+            <div class="srv-point"><div class="srv-point-dot"></div><div class="srv-point-text"><strong>Dépannage logiciel</strong>Virus, lenteurs, plantages, réinstallation Windows/macOS.</div></div>
+            <div class="srv-point"><div class="srv-point-dot"></div><div class="srv-point-text"><strong>Remplacement de pièces</strong>Écran, clavier, RAM, disque dur, SSD, ventilateur.</div></div>
+            <div class="srv-point"><div class="srv-point-dot"></div><div class="srv-point-text"><strong>Nettoyage & optimisation</strong>Nettoyage interne, pâte thermique, boost de performances.</div></div>
+            <div class="srv-point"><div class="srv-point-dot"></div><div class="srv-point-text"><strong>Récupération de données</strong>Sauvegarde et récupération sur disques endommagés.</div></div>
+          </div>
+        </div>
+        <div class="srv-detail-footer">
+          <div class="srv-badge-row"><span class="srv-badge">PC & Mac</span><span class="srv-badge">Diagnostic gratuit</span><span class="srv-badge">Devis immédiat</span></div>
+          <a class="srv-cta" href="#contact">Prendre rendez-vous</a>
+        </div>
       </div>
-      <div class="service-card">
-        <div class="service-icon">🛒</div>
-        <h3>Vente de téléphones</h3>
-        <p>Smartphones neufs et reconditionnés testés et garantis. Les meilleurs modèles disponibles.</p>
-        <div class="service-tag">Garantie incluse</div>
+
+      <div class="srv-detail" id="srv-2">
+        <div class="srv-detail-header">
+          <div class="srv-detail-tag">Service 03</div>
+          <div class="srv-detail-title">Réparation de tablettes</div>
+          <div class="srv-detail-desc">iPad, Samsung, Huawei et toutes les tablettes du marché — remplacement d'écran, batterie, boutons et plus.</div>
+        </div>
+        <div class="srv-detail-body">
+          <div class="srv-points">
+            <div class="srv-point"><div class="srv-point-dot"></div><div class="srv-point-text"><strong>Écran fissuré ou défaillant</strong>Remplacement complet avec calibration tactile.</div></div>
+            <div class="srv-point"><div class="srv-point-dot"></div><div class="srv-point-text"><strong>Batterie défaillante</strong>Remplacement rapide, autonomie retrouvée.</div></div>
+            <div class="srv-point"><div class="srv-point-dot"></div><div class="srv-point-text"><strong>Boutons et connecteurs</strong>Home, volume, charge — tout type de connectique.</div></div>
+            <div class="srv-point"><div class="srv-point-dot"></div><div class="srv-point-text"><strong>Caméra & son</strong>Micro, haut-parleur, caméra avant et arrière.</div></div>
+          </div>
+        </div>
+        <div class="srv-detail-footer">
+          <div class="srv-badge-row"><span class="srv-badge">Toutes marques</span><span class="srv-badge">Diagnostic gratuit</span></div>
+          <a class="srv-cta" href="#contact">Prendre rendez-vous</a>
+        </div>
       </div>
-      <div class="service-card">
-        <div class="service-icon">💰</div>
-        <h3>Reprise de téléphones</h3>
-        <p>Nous rachetons votre ancien téléphone au meilleur prix, peu importe son état.</p>
-        <div class="service-tag">Estimation gratuite</div>
+
+      <div class="srv-detail" id="srv-3">
+        <div class="srv-detail-header">
+          <div class="srv-detail-tag">Service 04</div>
+          <div class="srv-detail-title">Vente de téléphones</div>
+          <div class="srv-detail-desc">Smartphones neufs et reconditionnés — testés, garantis, disponibles immédiatement pour tous les budgets.</div>
+        </div>
+        <div class="srv-detail-body">
+          <div class="srv-points">
+            <div class="srv-point"><div class="srv-point-dot"></div><div class="srv-point-text"><strong>Téléphones neufs</strong>Derniers modèles avec garantie constructeur complète.</div></div>
+            <div class="srv-point"><div class="srv-point-dot"></div><div class="srv-point-text"><strong>Téléphones reconditionnés</strong>Testés et vérifiés, garantie incluse, prix réduit.</div></div>
+            <div class="srv-point"><div class="srv-point-dot"></div><div class="srv-point-text"><strong>Toutes les grandes marques</strong>Apple, Samsung, Xiaomi, Huawei et plus.</div></div>
+            <div class="srv-point"><div class="srv-point-dot"></div><div class="srv-point-text"><strong>Conseils personnalisés</strong>On vous aide à choisir selon votre usage et budget.</div></div>
+          </div>
+        </div>
+        <div class="srv-detail-footer">
+          <div class="srv-badge-row"><span class="srv-badge">Neuf & occasion</span><span class="srv-badge">Garantie incluse</span><span class="srv-badge">Stock disponible</span></div>
+          <a class="srv-cta" href="#contact">Voir la disponibilité</a>
+        </div>
       </div>
-      <div class="service-card">
-        <div class="service-icon">🎧</div>
-        <h3>Accessoires & coques</h3>
-        <p>Coques, protège-écrans, câbles, chargeurs, écouteurs — tout ce qu'il vous faut.</p>
-        <div class="service-tag">Large choix</div>
+
+      <div class="srv-detail" id="srv-4">
+        <div class="srv-detail-header">
+          <div class="srv-detail-tag">Service 05</div>
+          <div class="srv-detail-title">Reprise de téléphones</div>
+          <div class="srv-detail-desc">Nous rachetons votre ancien téléphone au meilleur prix, peu importe son état. Estimation gratuite, paiement immédiat.</div>
+        </div>
+        <div class="srv-detail-body">
+          <div class="srv-points">
+            <div class="srv-point"><div class="srv-point-dot"></div><div class="srv-point-text"><strong>Estimation gratuite</strong>Donnez-nous les infos de votre appareil, on évalue sous 24h.</div></div>
+            <div class="srv-point"><div class="srv-point-dot"></div><div class="srv-point-text"><strong>Tous états acceptés</strong>Écran cassé, ne s'allume plus — on rachète quand même.</div></div>
+            <div class="srv-point"><div class="srv-point-dot"></div><div class="srv-point-text"><strong>Paiement immédiat</strong>Vérification en magasin et paiement sur place.</div></div>
+            <div class="srv-point"><div class="srv-point-dot"></div><div class="srv-point-text"><strong>Toutes marques</strong>Apple, Samsung, Xiaomi, Huawei, OnePlus…</div></div>
+          </div>
+        </div>
+        <div class="srv-detail-footer">
+          <div class="srv-badge-row"><span class="srv-badge">Estimation gratuite</span><span class="srv-badge">Paiement immédiat</span><span class="srv-badge">Tous états</span></div>
+          <a class="srv-cta" href="#reprise">Estimer mon téléphone</a>
+        </div>
       </div>
-      <div class="service-card">
-        <div class="service-icon">🔓</div>
-        <h3>Déblocage & flash</h3>
-        <p>Déblocage réseau, réinitialisation, flash ROM — votre appareil retrouve toute sa liberté.</p>
-        <div class="service-tag">Rapide & sécurisé</div>
+
+      <div class="srv-detail" id="srv-5">
+        <div class="srv-detail-header">
+          <div class="srv-detail-tag">Service 06</div>
+          <div class="srv-detail-title">Accessoires & coques</div>
+          <div class="srv-detail-desc">Tout ce qu'il vous faut pour protéger et équiper votre appareil — disponible directement en magasin.</div>
+        </div>
+        <div class="srv-detail-body">
+          <div class="srv-points">
+            <div class="srv-point"><div class="srv-point-dot"></div><div class="srv-point-text"><strong>Coques & protections</strong>Coques, étuis, protège-écrans en verre trempé.</div></div>
+            <div class="srv-point"><div class="srv-point-dot"></div><div class="srv-point-text"><strong>Câbles & chargeurs</strong>USB-C, Lightning, sans fil — toutes compatibilités.</div></div>
+            <div class="srv-point"><div class="srv-point-dot"></div><div class="srv-point-text"><strong>Écouteurs & audio</strong>Filaires et sans fil, toutes gammes de prix.</div></div>
+            <div class="srv-point"><div class="srv-point-dot"></div><div class="srv-point-text"><strong>Batteries externes</strong>Power banks, chargeurs nomades, adaptateurs.</div></div>
+          </div>
+        </div>
+        <div class="srv-detail-footer">
+          <div class="srv-badge-row"><span class="srv-badge">Large choix</span><span class="srv-badge">En stock</span><span class="srv-badge">Tous modèles</span></div>
+          <a class="srv-cta" href="#contact">Nous contacter</a>
+        </div>
       </div>
-      <div class="service-card">
-        <div class="service-icon">🔧</div>
-        <h3>Maintenance informatique</h3>
-        <p>Entretien régulier, mises à jour, sauvegarde, sécurité — nous assurons la longévité de vos équipements.</p>
-        <div class="service-tag">Particuliers & pros</div>
+
+      <div class="srv-detail" id="srv-6">
+        <div class="srv-detail-header">
+          <div class="srv-detail-tag">Service 07</div>
+          <div class="srv-detail-title">Déblocage & flash</div>
+          <div class="srv-detail-desc">Déblocage réseau, réinitialisation et flash ROM — votre appareil retrouve toute sa liberté en toute sécurité.</div>
+        </div>
+        <div class="srv-detail-body">
+          <div class="srv-points">
+            <div class="srv-point"><div class="srv-point-dot"></div><div class="srv-point-text"><strong>Déblocage réseau</strong>Utilisez votre téléphone avec n'importe quel opérateur.</div></div>
+            <div class="srv-point"><div class="srv-point-dot"></div><div class="srv-point-text"><strong>Flash & réinitialisation</strong>Remise à zéro complète, installation ROM officielle.</div></div>
+            <div class="srv-point"><div class="srv-point-dot"></div><div class="srv-point-text"><strong>Suppression FRP / Google Lock</strong>Accès restauré sur votre propre appareil.</div></div>
+            <div class="srv-point"><div class="srv-point-dot"></div><div class="srv-point-text"><strong>Mise à jour firmware</strong>Mise à niveau du système pour de meilleures performances.</div></div>
+          </div>
+        </div>
+        <div class="srv-detail-footer">
+          <div class="srv-badge-row"><span class="srv-badge">Rapide</span><span class="srv-badge">Sécurisé</span><span class="srv-badge">Tous modèles</span></div>
+          <a class="srv-cta" href="#contact">Nous contacter</a>
+        </div>
       </div>
-    </div>
+
+      <div class="srv-detail" id="srv-7">
+        <div class="srv-detail-header">
+          <div class="srv-detail-tag">Service 08</div>
+          <div class="srv-detail-title">Maintenance informatique</div>
+          <div class="srv-detail-desc">Entretien régulier, mises à jour, sauvegarde et sécurité — nous assurons la longévité de vos équipements pour particuliers et professionnels.</div>
+        </div>
+        <div class="srv-detail-body">
+          <div class="srv-points">
+            <div class="srv-point"><div class="srv-point-dot"></div><div class="srv-point-text"><strong>Entretien régulier</strong>Nettoyage, mises à jour, vérification générale du système.</div></div>
+            <div class="srv-point"><div class="srv-point-dot"></div><div class="srv-point-text"><strong>Sauvegarde des données</strong>Solutions de backup locales et cloud sécurisées.</div></div>
+            <div class="srv-point"><div class="srv-point-dot"></div><div class="srv-point-text"><strong>Sécurité & antivirus</strong>Protection, suppression de malwares, configuration firewall.</div></div>
+            <div class="srv-point"><div class="srv-point-dot"></div><div class="srv-point-text"><strong>Contrats entreprises</strong>Interventions régulières pour les professionnels.</div></div>
+          </div>
+        </div>
+        <div class="srv-detail-footer">
+          <div class="srv-badge-row"><span class="srv-badge">Particuliers & pros</span><span class="srv-badge">Contrats disponibles</span></div>
+          <a class="srv-cta" href="#contact">Demander un devis</a>
+        </div>
+      </div>
+    </div><!-- /srv-layout -->
+
   </div>
 </section>
 
-<!-- VENTE NEUF / OCCASION -->
+<!-- VENTE -->
 <section id="vente">
   <div class="section-inner">
     <div class="section-tag">Vente de téléphones</div>
     <h2 class="section-title">Neuf ou occasion, à vous de choisir</h2>
-    <p class="section-sub">Nous proposons une large gamme de smartphones neufs et reconditionnés pour tous les budgets.</p>
+    <p class="section-sub">Une large gamme de smartphones pour tous les budgets.</p>
     <div class="vente-grid">
       <div class="vente-card">
         <span class="vente-badge neuf">Neuf</span>
         <h3>Téléphones neufs</h3>
-        <p>Les derniers modèles, encore sous emballage d'origine, avec garantie constructeur complète.</p>
+        <p>Les derniers modèles sous emballage d'origine, avec garantie constructeur complète.</p>
         <ul class="vente-list">
           <li>Garantie constructeur</li>
           <li>Derniers modèles disponibles</li>
@@ -279,7 +491,7 @@
       <div class="vente-card">
         <span class="vente-badge occasion">Occasion</span>
         <h3>Téléphones reconditionnés</h3>
-        <p>Des appareils d'occasion testés, vérifiés et remis en état pour un excellent rapport qualité-prix.</p>
+        <p>Testés, vérifiés et remis en état pour un excellent rapport qualité-prix.</p>
         <ul class="vente-list">
           <li>Testé et vérifié avant la vente</li>
           <li>Garantie incluse</li>
@@ -301,96 +513,25 @@
         <h2>Comment ça marche ?</h2>
         <p>Que votre téléphone soit en parfait état ou un peu usé, nous vous proposons une estimation gratuite et un rachat rapide.</p>
         <div class="reprise-steps">
-          <div class="reprise-step">
-            <div class="reprise-step-num">1</div>
-            <div class="reprise-step-text">
-              <strong>Décrivez votre appareil</strong>
-              <span>Marque, modèle, capacité et état général via notre formulaire de devis.</span>
-            </div>
-          </div>
-          <div class="reprise-step">
-            <div class="reprise-step-num">2</div>
-            <div class="reprise-step-text">
-              <strong>Recevez une estimation</strong>
-              <span>Nous vous donnons une fourchette de prix sous 24h, sans engagement.</span>
-            </div>
-          </div>
-          <div class="reprise-step">
-            <div class="reprise-step-num">3</div>
-            <div class="reprise-step-text">
-              <strong>Validez et soyez payé</strong>
-              <span>Déposez l'appareil en magasin, vérification finale, et paiement immédiat.</span>
-            </div>
-          </div>
+          <div class="reprise-step"><div class="reprise-step-num">1</div><div class="reprise-step-text"><strong>Décrivez votre appareil</strong><span>Marque, modèle, capacité et état général via notre formulaire.</span></div></div>
+          <div class="reprise-step"><div class="reprise-step-num">2</div><div class="reprise-step-text"><strong>Recevez une estimation</strong><span>Nous vous donnons une fourchette de prix sous 24h, sans engagement.</span></div></div>
+          <div class="reprise-step"><div class="reprise-step-num">3</div><div class="reprise-step-text"><strong>Validez et soyez payé</strong><span>Déposez l'appareil en magasin, vérification finale, paiement immédiat.</span></div></div>
         </div>
       </div>
       <div class="reprise-form">
         <h3>Demande de devis de reprise</h3>
-        <p class="form-note">Remplissez ce formulaire pour obtenir une estimation gratuite de votre appareil.</p>
+        <p class="form-note">Remplissez ce formulaire pour obtenir une estimation gratuite.</p>
         <div class="form-row2">
-          <div class="form-group">
-            <label>Marque</label>
-            <select>
-              <option value="">Sélectionner</option>
-              <option>Apple</option>
-              <option>Samsung</option>
-              <option>Huawei</option>
-              <option>Xiaomi</option>
-              <option>Oppo</option>
-              <option>OnePlus</option>
-              <option>Sony</option>
-              <option>Google</option>
-              <option>Autre</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <label>Modèle</label>
-            <input type="text" placeholder="Ex : iPhone 13 Pro">
-          </div>
+          <div class="form-group"><label>Marque</label><select><option value="">Sélectionner</option><option>Apple</option><option>Samsung</option><option>Huawei</option><option>Xiaomi</option><option>Oppo</option><option>OnePlus</option><option>Sony</option><option>Google</option><option>Autre</option></select></div>
+          <div class="form-group"><label>Modèle</label><input type="text" placeholder="Ex : iPhone 13 Pro"></div>
         </div>
         <div class="form-row2">
-          <div class="form-group">
-            <label>Capacité de stockage</label>
-            <select>
-              <option value="">Sélectionner</option>
-              <option>32 Go</option>
-              <option>64 Go</option>
-              <option>128 Go</option>
-              <option>256 Go</option>
-              <option>512 Go</option>
-              <option>1 To</option>
-              <option>Je ne sais pas</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <label>État de la batterie</label>
-            <select>
-              <option value="">Sélectionner</option>
-              <option>Excellent (90-100%)</option>
-              <option>Bon (80-89%)</option>
-              <option>Moyen (70-79%)</option>
-              <option>Faible (moins de 70%)</option>
-              <option>Je ne sais pas</option>
-            </select>
-          </div>
+          <div class="form-group"><label>Stockage</label><select><option value="">Sélectionner</option><option>32 Go</option><option>64 Go</option><option>128 Go</option><option>256 Go</option><option>512 Go</option><option>1 To</option></select></div>
+          <div class="form-group"><label>Batterie</label><select><option value="">Sélectionner</option><option>Excellent (90-100%)</option><option>Bon (80-89%)</option><option>Moyen (70-79%)</option><option>Faible (-70%)</option></select></div>
         </div>
-        <div class="form-group">
-          <label>État général de l'appareil</label>
-          <select>
-            <option value="">Sélectionner</option>
-            <option>Comme neuf (aucune trace)</option>
-            <option>Très bon état (légères traces d'usure)</option>
-            <option>Bon état (rayures visibles)</option>
-            <option>Écran fissuré / cassé</option>
-            <option>Ne s'allume plus</option>
-          </select>
-        </div>
-        <div class="form-group">
-          <label>Vos coordonnées</label>
-          <input type="text" placeholder="Nom et téléphone" style="margin-bottom:10px">
-          <textarea placeholder="Précisions supplémentaires sur l'état de l'appareil (optionnel)"></textarea>
-        </div>
-        <button class="form-submit" onclick="alert('Demande de devis envoyée ! Nous vous recontactons sous 24h avec une estimation.')">Recevoir mon estimation</button>
+        <div class="form-group"><label>État général</label><select><option value="">Sélectionner</option><option>Comme neuf</option><option>Très bon état</option><option>Bon état</option><option>Écran fissuré</option><option>Ne s'allume plus</option></select></div>
+        <div class="form-group"><label>Vos coordonnées</label><input type="text" placeholder="Nom et téléphone" style="margin-bottom:10px"><textarea placeholder="Précisions supplémentaires (optionnel)"></textarea></div>
+        <button class="form-submit" onclick="alert('Demande envoyée ! Nous vous recontactons sous 24h.')">Recevoir mon estimation</button>
       </div>
     </div>
   </div>
@@ -403,48 +544,12 @@
     <h2 class="section-title">Notre engagement</h2>
     <p class="section-sub">Nous mettons tout en œuvre pour vous offrir le meilleur service possible.</p>
     <div class="features-grid">
-      <div class="feature">
-        <div class="feature-icon">⚡</div>
-        <div>
-          <h4>Réparations express</h4>
-          <p>La plupart des réparations courantes réalisées en moins d'une heure sur place.</p>
-        </div>
-      </div>
-      <div class="feature">
-        <div class="feature-icon">🔍</div>
-        <div>
-          <h4>Diagnostic offert</h4>
-          <p>On examine votre appareil gratuitement avant tout devis. Aucune mauvaise surprise.</p>
-        </div>
-      </div>
-      <div class="feature">
-        <div class="feature-icon">🛡️</div>
-        <div>
-          <h4>Pièces de qualité</h4>
-          <p>Nous utilisons uniquement des pièces fiables pour garantir la durabilité des réparations.</p>
-        </div>
-      </div>
-      <div class="feature">
-        <div class="feature-icon">💬</div>
-        <div>
-          <h4>Conseils personnalisés</h4>
-          <p>Notre équipe vous guide pour faire le meilleur choix selon votre budget et vos besoins.</p>
-        </div>
-      </div>
-      <div class="feature">
-        <div class="feature-icon">🏷️</div>
-        <div>
-          <h4>Prix transparents</h4>
-          <p>Tarifs clairs et compétitifs, affichés dès le devis. Vous savez exactement ce que vous payez.</p>
-        </div>
-      </div>
-      <div class="feature">
-        <div class="feature-icon">📦</div>
-        <div>
-          <h4>Garantie sur les réparations</h4>
-          <p>Toutes nos réparations sont garanties. Si un problème survient, on s'en occupe.</p>
-        </div>
-      </div>
+      <div class="feature"><div class="feature-icon">⚡</div><div><h4>Réparations express</h4><p>La plupart des réparations courantes réalisées en moins d'une heure sur place.</p></div></div>
+      <div class="feature"><div class="feature-icon">🔍</div><div><h4>Diagnostic offert</h4><p>On examine votre appareil gratuitement avant tout devis. Aucune mauvaise surprise.</p></div></div>
+      <div class="feature"><div class="feature-icon">🛡️</div><div><h4>Pièces de qualité</h4><p>Nous utilisons uniquement des pièces fiables pour garantir la durabilité des réparations.</p></div></div>
+      <div class="feature"><div class="feature-icon">💬</div><div><h4>Conseils personnalisés</h4><p>Notre équipe vous guide pour faire le meilleur choix selon votre budget et vos besoins.</p></div></div>
+      <div class="feature"><div class="feature-icon">🏷️</div><div><h4>Prix transparents</h4><p>Tarifs clairs et compétitifs, affichés dès le devis. Vous savez exactement ce que vous payez.</p></div></div>
+      <div class="feature"><div class="feature-icon">📦</div><div><h4>Garantie sur réparations</h4><p>Toutes nos réparations sont garanties. Si un problème survient, on s'en occupe.</p></div></div>
     </div>
   </div>
 </section>
@@ -456,20 +561,7 @@
     <h2 class="section-title">Toutes les grandes marques</h2>
     <p class="section-sub" style="margin:0 auto 48px">Nous intervenons sur l'ensemble des marques du marché.</p>
     <div class="brands-list">
-      <div class="brand-pill">Apple</div>
-      <div class="brand-pill">Samsung</div>
-      <div class="brand-pill">Huawei</div>
-      <div class="brand-pill">Xiaomi</div>
-      <div class="brand-pill">Oppo</div>
-      <div class="brand-pill">OnePlus</div>
-      <div class="brand-pill">HP</div>
-      <div class="brand-pill">Dell</div>
-      <div class="brand-pill">Lenovo</div>
-      <div class="brand-pill">Asus</div>
-      <div class="brand-pill">Acer</div>
-      <div class="brand-pill">Sony</div>
-      <div class="brand-pill">LG</div>
-      <div class="brand-pill">Nokia</div>
+      <div class="brand-pill">Apple</div><div class="brand-pill">Samsung</div><div class="brand-pill">Huawei</div><div class="brand-pill">Xiaomi</div><div class="brand-pill">Oppo</div><div class="brand-pill">OnePlus</div><div class="brand-pill">HP</div><div class="brand-pill">Dell</div><div class="brand-pill">Lenovo</div><div class="brand-pill">Asus</div><div class="brand-pill">Acer</div><div class="brand-pill">Sony</div><div class="brand-pill">LG</div><div class="brand-pill">Nokia</div>
     </div>
   </div>
 </section>
@@ -482,115 +574,120 @@
     <p class="section-sub">Déposez votre appareil en magasin ou contactez-nous pour un devis rapide.</p>
     <div class="contact-grid">
       <div class="contact-info">
-        <div class="contact-item">
-          <div class="contact-item-icon">📍</div>
-          <div class="contact-item-text">
-            <strong>Adresse</strong>
-            <!-- MODIFIER : remplacer par votre adresse -->
-            <span>À compléter — votre adresse</span>
-          </div>
-        </div>
-        <div class="contact-item">
-          <div class="contact-item-icon">📞</div>
-          <div class="contact-item-text">
-            <strong>Téléphone</strong>
-            <!-- MODIFIER : remplacer par votre numéro -->
-            <span>À compléter — votre numéro</span>
-          </div>
-        </div>
-        <div class="contact-item">
-          <div class="contact-item-icon">🕐</div>
-          <div class="contact-item-text">
-            <strong>Horaires</strong>
-            <!-- MODIFIER : remplacer par vos horaires -->
-            <span>Lun–Sam : 9h–19h</span>
-          </div>
-        </div>
-        <div class="contact-item">
-          <div class="contact-item-icon">✉️</div>
-          <div class="contact-item-text">
-            <strong>Email</strong>
-            <!-- MODIFIER : remplacer par votre email -->
-            <span>contact@wminfo.fr</span>
-          </div>
-        </div>
+        <div class="contact-item"><div class="contact-item-icon">📍</div><div class="contact-item-text"><strong>Adresse</strong><span>À compléter — votre adresse</span></div></div>
+        <div class="contact-item"><div class="contact-item-icon">📞</div><div class="contact-item-text"><strong>Téléphone</strong><span>À compléter — votre numéro</span></div></div>
+        <div class="contact-item"><div class="contact-item-icon">🕐</div><div class="contact-item-text"><strong>Horaires</strong><span>Lun–Sam : 9h–19h</span></div></div>
+        <div class="contact-item"><div class="contact-item-icon">✉️</div><div class="contact-item-text"><strong>Email</strong><span>contact@wminfo.fr</span></div></div>
       </div>
       <div class="contact-form">
-        <div class="form-group">
-          <label>Votre nom</label>
-          <input type="text" placeholder="Jean Dupont">
-        </div>
-        <div class="form-group">
-          <label>Téléphone</label>
-          <input type="tel" placeholder="06 00 00 00 00">
-        </div>
+        <div class="form-group"><label>Votre nom</label><input type="text" placeholder="Jean Dupont"></div>
+        <div class="form-group"><label>Téléphone</label><input type="tel" placeholder="06 00 00 00 00"></div>
         <div class="form-group">
           <label>Type de demande</label>
-          <select id="demandeType" onchange="document.getElementById('repriseFields').className = this.value==='Reprise de téléphone' ? 'form-group active' : 'form-group'; document.getElementById('repriseFields').style.display = this.value==='Reprise de téléphone' ? 'block' : 'none';">
-            <option>Réparation téléphone</option>
-            <option>Réparation ordinateur</option>
-            <option>Réparation tablette</option>
-            <option>Maintenance informatique</option>
-            <option>Achat téléphone neuf</option>
-            <option>Achat téléphone occasion</option>
-            <option>Reprise de téléphone</option>
-            <option>Déblocage / flash</option>
-            <option>Accessoires</option>
-            <option>Autre</option>
+          <select id="demandeType" onchange="document.getElementById('repriseFields').style.display=this.value==='Reprise de téléphone'?'block':'none'">
+            <option>Réparation téléphone</option><option>Réparation ordinateur</option><option>Réparation tablette</option><option>Maintenance informatique</option><option>Achat téléphone neuf</option><option>Achat téléphone occasion</option><option>Reprise de téléphone</option><option>Déblocage / flash</option><option>Accessoires</option><option>Autre</option>
           </select>
         </div>
         <div id="repriseFields">
           <div class="form-row2">
-            <div class="form-group">
-              <label>Marque du téléphone</label>
-              <input type="text" placeholder="Ex : Apple, Samsung...">
-            </div>
-            <div class="form-group">
-              <label>Modèle</label>
-              <input type="text" placeholder="Ex : iPhone 13 Pro">
-            </div>
-          </div>
-          <div class="form-row2">
-            <div class="form-group">
-              <label>Capacité</label>
-              <select>
-                <option value="">Sélectionner</option>
-                <option>32 Go</option>
-                <option>64 Go</option>
-                <option>128 Go</option>
-                <option>256 Go</option>
-                <option>512 Go</option>
-                <option>1 To</option>
-              </select>
-            </div>
-            <div class="form-group">
-              <label>État batterie</label>
-              <select>
-                <option value="">Sélectionner</option>
-                <option>Excellent (90-100%)</option>
-                <option>Bon (80-89%)</option>
-                <option>Moyen (70-79%)</option>
-                <option>Faible (moins de 70%)</option>
-              </select>
-            </div>
+            <div class="form-group"><label>Marque</label><input type="text" placeholder="Apple, Samsung…"></div>
+            <div class="form-group"><label>Modèle</label><input type="text" placeholder="iPhone 13 Pro"></div>
           </div>
         </div>
-        <div class="form-group">
-          <label>Message</label>
-          <textarea placeholder="Décrivez votre appareil et le problème rencontré, ou l'état de l'appareil pour une reprise..."></textarea>
-        </div>
+        <div class="form-group"><label>Message</label><textarea placeholder="Décrivez votre appareil et le problème rencontré…"></textarea></div>
         <button class="form-submit" onclick="alert('Message envoyé ! Nous vous répondons sous 24h.')">Envoyer ma demande</button>
       </div>
     </div>
   </div>
 </section>
 
-<!-- FOOTER -->
 <footer>
   <div class="footer-logo">WM<span> INFO</span></div>
   <p style="margin-top:8px">Votre expert en réparation, vente et reprise de téléphones, ordinateurs et tablettes</p>
   <p style="margin-top:12px;font-size:12px">© 2025 WM INFO – Tous droits réservés</p>
 </footer>
 
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+<script>
+  emailjs.init('eoOCranARA6r_ezaR');
+
+  // ── Navigation services ──
+  function showSrv(idx) {
+    document.querySelectorAll('.srv-nav-item').forEach((el, i) => el.classList.toggle('active', i === idx));
+    document.querySelectorAll('.srv-detail').forEach((el, i) => el.classList.toggle('active', i === idx));
+  }
+
+  // ── Formulaire contact ──
+  document.querySelector('.form-submit').addEventListener('click', async function() {
+    const nom          = document.querySelector('.contact-form input[type="text"]').value.trim();
+    const telephone    = document.querySelector('.contact-form input[type="tel"]').value.trim();
+    const type_demande = document.getElementById('demandeType').value;
+    const message      = document.querySelector('.contact-form textarea').value.trim();
+
+    if (!nom || !telephone) {
+      alert('Veuillez renseigner votre nom et téléphone.');
+      return;
+    }
+
+    this.disabled = true;
+    this.textContent = 'Envoi en cours…';
+
+    try {
+      await emailjs.send('service_h6206i2', 'template_vyqyss8', {
+        nom,
+        telephone,
+        type_demande,
+        message: message || 'Aucun message',
+        email: ''
+      });
+      this.textContent = '✓ Message envoyé !';
+      this.style.background = '#22c55e';
+    } catch (err) {
+      console.error(err);
+      this.disabled = false;
+      this.textContent = 'Envoyer ma demande';
+      alert('Une erreur est survenue. Veuillez réessayer.');
+    }
+  });
+
+  // ── Formulaire reprise ──
+  document.querySelector('.reprise-form .form-submit').addEventListener('click', async function() {
+    const fields   = document.querySelectorAll('.reprise-form select');
+    const marque   = fields[0].value;
+    const modele   = document.querySelector('.reprise-form input[type="text"]').value.trim();
+    const stockage = fields[1].value;
+    const batterie = fields[2].value;
+    const etat     = fields[3].value;
+    const coordonnees = document.querySelector('.reprise-form input[placeholder="Nom et téléphone"]').value.trim();
+    const message  = document.querySelector('.reprise-form textarea').value.trim();
+
+    if (!marque || !modele || !coordonnees) {
+      alert('Veuillez renseigner au minimum la marque, le modèle et vos coordonnées.');
+      return;
+    }
+
+    this.disabled = true;
+    this.textContent = 'Envoi en cours…';
+
+    try {
+      await emailjs.send('service_h6206i2', 'template_dij4z4c', {
+        marque,
+        modele,
+        stockage:     stockage  || 'Non renseigné',
+        batterie:     batterie  || 'Non renseigné',
+        etat:         etat      || 'Non renseigné',
+        coordonnees,
+        message:      message   || 'Aucune précision'
+      });
+      this.textContent = '✓ Demande envoyée !';
+      this.style.background = '#22c55e';
+    } catch (err) {
+      console.error(err);
+      this.disabled = false;
+      this.textContent = 'Recevoir mon estimation';
+      alert('Une erreur est survenue. Veuillez réessayer.');
+    }
+  });
+</script>
 </body>
 </html>
