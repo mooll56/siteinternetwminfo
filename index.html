@@ -580,8 +580,8 @@
         <div class="contact-item"><div class="contact-item-icon">✉️</div><div class="contact-item-text"><strong>Email</strong><span>contact@wminfo.fr</span></div></div>
       </div>
       <div class="contact-form">
-        <div class="form-group"><label>Votre nom</label><input type="text" placeholder="Jean Dupont"></div>
-        <div class="form-group"><label>Téléphone</label><input type="tel" placeholder="06 00 00 00 00"></div>
+        <div class="form-group"><label>Votre nom</label><input id="contactNom" type="text" placeholder="Jean Dupont"></div>
+        <div class="form-group"><label>Téléphone</label><input id="contactTel" type="tel" placeholder="06 00 00 00 00"></div>
         <div class="form-group">
           <label>Type de demande</label>
           <select id="demandeType" onchange="document.getElementById('repriseFields').style.display=this.value==='Reprise de téléphone'?'block':'none'">
@@ -594,8 +594,8 @@
             <div class="form-group"><label>Modèle</label><input type="text" placeholder="iPhone 13 Pro"></div>
           </div>
         </div>
-        <div class="form-group"><label>Message</label><textarea placeholder="Décrivez votre appareil et le problème rencontré…"></textarea></div>
-        <button class="form-submit" onclick="alert('Message envoyé ! Nous vous répondons sous 24h.')">Envoyer ma demande</button>
+        <div class="form-group"><label>Message</label><textarea id="contactMessage" placeholder="Décrivez votre appareil et le problème rencontré…"></textarea></div>
+        <button id="contactSubmit" class="form-submit">Envoyer ma demande</button>
       </div>
     </div>
   </div>
@@ -618,11 +618,11 @@
   }
 
   // ── Formulaire contact ──
-  document.querySelector('.form-submit').addEventListener('click', async function() {
-    const nom          = document.querySelector('.contact-form input[type="text"]').value.trim();
-    const telephone    = document.querySelector('.contact-form input[type="tel"]').value.trim();
+  document.getElementById('contactSubmit').addEventListener('click', async function() {
+    const nom          = document.getElementById('contactNom').value.trim();
+    const telephone    = document.getElementById('contactTel').value.trim();
     const type_demande = document.getElementById('demandeType').value;
-    const message      = document.querySelector('.contact-form textarea').value.trim();
+    const message      = document.getElementById('contactMessage').value.trim();
 
     if (!nom || !telephone) {
       alert('Veuillez renseigner votre nom et téléphone.');
@@ -637,8 +637,7 @@
         nom,
         telephone,
         type_demande,
-        message: message || 'Aucun message',
-        email: ''
+        message: message || 'Aucun message'
       });
       this.textContent = '✓ Message envoyé !';
       this.style.background = '#22c55e';
