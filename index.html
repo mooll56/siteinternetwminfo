@@ -235,7 +235,7 @@
       <li><a href="#marques">Marques</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
-    <a class="nav-cta" href="#contact">Demander un devis</a>
+    <a class="nav-cta" href="#contact" onclick="goContact('Réparation téléphone')">Demander un devis</a>
   </div>
 </nav>
 
@@ -247,7 +247,7 @@
     <h1>Votre spécialiste<br><span class="accent">réparation & vente</span><br>en informatique</h1>
     <p>Téléphones, ordinateurs, tablettes — nous réparons, vendons, reprenons et débloquons tous vos appareils. Rapidement. Efficacement.</p>
     <div class="hero-btns">
-      <a class="btn-primary" href="#contact">Déposer un appareil</a>
+      <a class="btn-primary" href="#contact" onclick="goContact('Réparation téléphone')">Déposer un appareil</a>
       <a class="btn-secondary" href="#services">Voir nos services</a>
     </div>
   </div>
@@ -322,7 +322,7 @@
         </div>
         <div class="srv-detail-footer">
           <div class="srv-badge-row"><span class="srv-badge">Diagnostic gratuit</span><span class="srv-badge">Toutes marques</span><span class="srv-badge">Résultat en 1h</span></div>
-          <a class="srv-cta" href="#contact">Prendre rendez-vous</a>
+          <a class="srv-cta" href="#contact" onclick="goContact('Réparation téléphone')">Prendre rendez-vous</a>
         </div>
       </div>
 
@@ -342,7 +342,7 @@
         </div>
         <div class="srv-detail-footer">
           <div class="srv-badge-row"><span class="srv-badge">PC & Mac</span><span class="srv-badge">Diagnostic gratuit</span><span class="srv-badge">Devis immédiat</span></div>
-          <a class="srv-cta" href="#contact">Prendre rendez-vous</a>
+          <a class="srv-cta" href="#contact" onclick="goContact('Réparation ordinateur')">Prendre rendez-vous</a>
         </div>
       </div>
 
@@ -362,7 +362,7 @@
         </div>
         <div class="srv-detail-footer">
           <div class="srv-badge-row"><span class="srv-badge">Toutes marques</span><span class="srv-badge">Diagnostic gratuit</span></div>
-          <a class="srv-cta" href="#contact">Prendre rendez-vous</a>
+          <a class="srv-cta" href="#contact" onclick="goContact('Réparation tablette')">Prendre rendez-vous</a>
         </div>
       </div>
 
@@ -382,7 +382,7 @@
         </div>
         <div class="srv-detail-footer">
           <div class="srv-badge-row"><span class="srv-badge">Neuf & occasion</span><span class="srv-badge">Garantie incluse</span><span class="srv-badge">Stock disponible</span></div>
-          <a class="srv-cta" href="#contact">Voir la disponibilité</a>
+          <a class="srv-cta" href="#contact" onclick="goContact('Achat téléphone neuf')">Voir la disponibilité</a>
         </div>
       </div>
 
@@ -402,7 +402,7 @@
         </div>
         <div class="srv-detail-footer">
           <div class="srv-badge-row"><span class="srv-badge">Estimation gratuite</span><span class="srv-badge">Paiement immédiat</span><span class="srv-badge">Tous états</span></div>
-          <a class="srv-cta" href="#reprise">Estimer mon téléphone</a>
+          <a class="srv-cta" href="#contact" onclick="goContact('Reprise de téléphone (estimation)')">Estimer mon téléphone</a>
         </div>
       </div>
 
@@ -422,7 +422,7 @@
         </div>
         <div class="srv-detail-footer">
           <div class="srv-badge-row"><span class="srv-badge">Large choix</span><span class="srv-badge">En stock</span><span class="srv-badge">Tous modèles</span></div>
-          <a class="srv-cta" href="#contact">Nous contacter</a>
+          <a class="srv-cta" href="#contact" onclick="goContact('Accessoires')">Nous contacter</a>
         </div>
       </div>
 
@@ -442,7 +442,7 @@
         </div>
         <div class="srv-detail-footer">
           <div class="srv-badge-row"><span class="srv-badge">Rapide</span><span class="srv-badge">Sécurisé</span><span class="srv-badge">Tous modèles</span></div>
-          <a class="srv-cta" href="#contact">Nous contacter</a>
+          <a class="srv-cta" href="#contact" onclick="goContact('Déblocage / flash')">Nous contacter</a>
         </div>
       </div>
 
@@ -462,7 +462,7 @@
         </div>
         <div class="srv-detail-footer">
           <div class="srv-badge-row"><span class="srv-badge">Particuliers & pros</span><span class="srv-badge">Contrats disponibles</span></div>
-          <a class="srv-cta" href="#contact">Demander un devis</a>
+          <a class="srv-cta" href="#contact" onclick="goContact('Maintenance informatique')">Demander un devis</a>
         </div>
       </div>
     </div><!-- /srv-layout -->
@@ -486,7 +486,7 @@
           <li>Derniers modèles disponibles</li>
           <li>Accessoires d'origine inclus</li>
         </ul>
-        <a class="btn-small" href="#contact">Voir la disponibilité</a>
+        <a class="btn-small" href="#contact" onclick="goContact('Achat téléphone neuf')">Voir la disponibilité</a>
       </div>
       <div class="vente-card">
         <span class="vente-badge occasion">Occasion</span>
@@ -497,7 +497,7 @@
           <li>Garantie incluse</li>
           <li>Prix réduit par rapport au neuf</li>
         </ul>
-        <a class="btn-small" href="#contact">Voir la disponibilité</a>
+        <a class="btn-small" href="#contact" onclick="goContact('Achat téléphone occasion')">Voir la disponibilité</a>
       </div>
     </div>
   </div>
@@ -518,20 +518,10 @@
           <div class="reprise-step"><div class="reprise-step-num">3</div><div class="reprise-step-text"><strong>Validez et soyez payé</strong><span>Déposez l'appareil en magasin, vérification finale, paiement immédiat.</span></div></div>
         </div>
       </div>
-      <div class="reprise-form">
-        <h3>Demande de devis de reprise</h3>
-        <p class="form-note">Remplissez ce formulaire pour obtenir une estimation gratuite.</p>
-        <div class="form-row2">
-          <div class="form-group"><label>Marque</label><select><option value="">Sélectionner</option><option>Apple</option><option>Samsung</option><option>Huawei</option><option>Xiaomi</option><option>Oppo</option><option>OnePlus</option><option>Sony</option><option>Google</option><option>Autre</option></select></div>
-          <div class="form-group"><label>Modèle</label><input type="text" placeholder="Ex : iPhone 13 Pro"></div>
-        </div>
-        <div class="form-row2">
-          <div class="form-group"><label>Stockage</label><select><option value="">Sélectionner</option><option>32 Go</option><option>64 Go</option><option>128 Go</option><option>256 Go</option><option>512 Go</option><option>1 To</option></select></div>
-          <div class="form-group"><label>Batterie</label><select><option value="">Sélectionner</option><option>Excellent (90-100%)</option><option>Bon (80-89%)</option><option>Moyen (70-79%)</option><option>Faible (-70%)</option></select></div>
-        </div>
-        <div class="form-group"><label>État général</label><select><option value="">Sélectionner</option><option>Comme neuf</option><option>Très bon état</option><option>Bon état</option><option>Écran fissuré</option><option>Ne s'allume plus</option></select></div>
-        <div class="form-group"><label>Vos coordonnées</label><input type="text" placeholder="Nom et téléphone" style="margin-bottom:10px"><textarea placeholder="Précisions supplémentaires (optionnel)"></textarea></div>
-        <button class="form-submit" onclick="alert('Demande envoyée ! Nous vous recontactons sous 24h.')">Recevoir mon estimation</button>
+      <div class="reprise-form" style="display:flex;flex-direction:column;justify-content:center;gap:16px">
+        <h3>Obtenez votre estimation</h3>
+        <p class="form-note" style="margin-bottom:0">Que ce soit pour un devis de réparation ou pour estimer votre téléphone à reprendre, tout se passe au même endroit : choisissez simplement le type de demande dans notre formulaire de contact.</p>
+        <a class="srv-cta" style="align-self:flex-start" href="#contact" onclick="goContact('Reprise de téléphone (estimation)')">Estimer mon téléphone</a>
       </div>
     </div>
   </div>
@@ -574,24 +564,37 @@
     <p class="section-sub">Déposez votre appareil en magasin ou contactez-nous pour un devis rapide.</p>
     <div class="contact-grid">
       <div class="contact-info">
-        <div class="contact-item"><div class="contact-item-icon">📍</div><div class="contact-item-text"><strong>Adresse</strong><span>À compléter — votre adresse</span></div></div>
-        <div class="contact-item"><div class="contact-item-icon">📞</div><div class="contact-item-text"><strong>Téléphone</strong><span>À compléter — votre numéro</span></div></div>
+        <div class="contact-item"><div class="contact-item-icon">📍</div><div class="contact-item-text"><strong>Adresse</strong><span>Ouverture prochainement</span></div></div>
+        <div class="contact-item"><div class="contact-item-icon">📞</div><div class="contact-item-text"><strong>Téléphone</strong><span>07 74 80 09 64</span></div></div>
         <div class="contact-item"><div class="contact-item-icon">🕐</div><div class="contact-item-text"><strong>Horaires</strong><span>Lun–Sam : 9h–19h</span></div></div>
-        <div class="contact-item"><div class="contact-item-icon">✉️</div><div class="contact-item-text"><strong>Email</strong><span>contact@wminfo.fr</span></div></div>
+        <div class="contact-item"><div class="contact-item-icon">✉️</div><div class="contact-item-text"><strong>Email</strong><span>wminfo.paris@gmail.com</span></div></div>
       </div>
       <div class="contact-form">
         <div class="form-group"><label>Votre nom</label><input id="contactNom" type="text" placeholder="Jean Dupont"></div>
         <div class="form-group"><label>Téléphone</label><input id="contactTel" type="tel" placeholder="06 00 00 00 00"></div>
         <div class="form-group">
           <label>Type de demande</label>
-          <select id="demandeType" onchange="document.getElementById('repriseFields').style.display=this.value==='Reprise de téléphone'?'block':'none'">
-            <option>Réparation téléphone</option><option>Réparation ordinateur</option><option>Réparation tablette</option><option>Maintenance informatique</option><option>Achat téléphone neuf</option><option>Achat téléphone occasion</option><option>Reprise de téléphone</option><option>Déblocage / flash</option><option>Accessoires</option><option>Autre</option>
+          <select id="demandeType" onchange="document.getElementById('repriseFields').style.display=this.value==='Reprise de téléphone (estimation)'?'block':'none'">
+            <option>Réparation téléphone</option><option>Réparation ordinateur</option><option>Réparation tablette</option><option>Maintenance informatique</option><option>Achat téléphone neuf</option><option>Achat téléphone occasion</option><option>Reprise de téléphone (estimation)</option><option>Déblocage / flash</option><option>Accessoires</option><option>Autre</option>
           </select>
         </div>
         <div id="repriseFields">
           <div class="form-row2">
-            <div class="form-group"><label>Marque</label><input type="text" placeholder="Apple, Samsung…"></div>
-            <div class="form-group"><label>Modèle</label><input type="text" placeholder="iPhone 13 Pro"></div>
+            <div class="form-group"><label>Marque</label>
+              <select id="repriseMarque"><option value="">Sélectionner</option><option>Apple</option><option>Samsung</option><option>Huawei</option><option>Xiaomi</option><option>Oppo</option><option>OnePlus</option><option>Sony</option><option>Google</option><option>Autre</option></select>
+            </div>
+            <div class="form-group"><label>Modèle</label><input id="repriseModele" type="text" placeholder="Ex : iPhone 13 Pro"></div>
+          </div>
+          <div class="form-row2">
+            <div class="form-group"><label>Stockage</label>
+              <select id="repriseStockage"><option value="">Sélectionner</option><option>32 Go</option><option>64 Go</option><option>128 Go</option><option>256 Go</option><option>512 Go</option><option>1 To</option></select>
+            </div>
+            <div class="form-group"><label>Batterie</label>
+              <select id="repriseBatterie"><option value="">Sélectionner</option><option>Excellent (90-100%)</option><option>Bon (80-89%)</option><option>Moyen (70-79%)</option><option>Faible (-70%)</option></select>
+            </div>
+          </div>
+          <div class="form-group"><label>État général</label>
+            <select id="repriseEtat"><option value="">Sélectionner</option><option>Comme neuf</option><option>Très bon état</option><option>Bon état</option><option>Écran fissuré</option><option>Ne s'allume plus</option></select>
           </div>
         </div>
         <div class="form-group"><label>Message</label><textarea id="contactMessage" placeholder="Décrivez votre appareil et le problème rencontré…"></textarea></div>
@@ -617,73 +620,68 @@
     document.querySelectorAll('.srv-detail').forEach((el, i) => el.classList.toggle('active', i === idx));
   }
 
-  // ── Formulaire contact ──
+  // ── Pré-sélection du type de demande depuis n'importe quel bouton du site ──
+  function goContact(type) {
+    const sel = document.getElementById('demandeType');
+    sel.value = type;
+    sel.dispatchEvent(new Event('change'));
+  }
+
+  // ── Formulaire de contact unifié (devis + estimation de reprise) ──
   document.getElementById('contactSubmit').addEventListener('click', async function() {
     const nom          = document.getElementById('contactNom').value.trim();
     const telephone    = document.getElementById('contactTel').value.trim();
     const type_demande = document.getElementById('demandeType').value;
     const message      = document.getElementById('contactMessage').value.trim();
+    const isReprise    = type_demande === 'Reprise de téléphone (estimation)';
 
     if (!nom || !telephone) {
       alert('Veuillez renseigner votre nom et téléphone.');
       return;
     }
 
-    this.disabled = true;
-    this.textContent = 'Envoi en cours…';
+    let marque = '', modele = '', stockage = '', batterie = '', etat = '';
+    if (isReprise) {
+      marque   = document.getElementById('repriseMarque').value;
+      modele   = document.getElementById('repriseModele').value.trim();
+      stockage = document.getElementById('repriseStockage').value;
+      batterie = document.getElementById('repriseBatterie').value;
+      etat     = document.getElementById('repriseEtat').value;
 
-    try {
-      await emailjs.send('service_h6206i2', 'template_vyqyss8', {
-        nom,
-        telephone,
-        type_demande,
-        message: message || 'Aucun message'
-      });
-      this.textContent = '✓ Message envoyé !';
-      this.style.background = '#22c55e';
-    } catch (err) {
-      console.error(err);
-      this.disabled = false;
-      this.textContent = 'Envoyer ma demande';
-      alert('Une erreur est survenue. Veuillez réessayer.');
-    }
-  });
-
-  // ── Formulaire reprise ──
-  document.querySelector('.reprise-form .form-submit').addEventListener('click', async function() {
-    const fields   = document.querySelectorAll('.reprise-form select');
-    const marque   = fields[0].value;
-    const modele   = document.querySelector('.reprise-form input[type="text"]').value.trim();
-    const stockage = fields[1].value;
-    const batterie = fields[2].value;
-    const etat     = fields[3].value;
-    const coordonnees = document.querySelector('.reprise-form input[placeholder="Nom et téléphone"]').value.trim();
-    const message  = document.querySelector('.reprise-form textarea').value.trim();
-
-    if (!marque || !modele || !coordonnees) {
-      alert('Veuillez renseigner au minimum la marque, le modèle et vos coordonnées.');
-      return;
+      if (!marque || !modele) {
+        alert('Veuillez renseigner au minimum la marque et le modèle de votre téléphone.');
+        return;
+      }
     }
 
     this.disabled = true;
     this.textContent = 'Envoi en cours…';
 
     try {
-      await emailjs.send('service_h6206i2', 'template_dij4z4c', {
-        marque,
-        modele,
-        stockage:     stockage  || 'Non renseigné',
-        batterie:     batterie  || 'Non renseigné',
-        etat:         etat      || 'Non renseigné',
-        coordonnees,
-        message:      message   || 'Aucune précision'
-      });
+      if (isReprise) {
+        await emailjs.send('service_h6206i2', 'template_dij4z4c', {
+          marque,
+          modele,
+          stockage:    stockage || 'Non renseigné',
+          batterie:    batterie || 'Non renseigné',
+          etat:        etat     || 'Non renseigné',
+          coordonnees: nom + ' - ' + telephone,
+          message:     message  || 'Aucune précision'
+        });
+      } else {
+        await emailjs.send('service_h6206i2', 'template_vyqyss8', {
+          nom,
+          telephone,
+          type_demande,
+          message: message || 'Aucun message'
+        });
+      }
       this.textContent = '✓ Demande envoyée !';
       this.style.background = '#22c55e';
     } catch (err) {
       console.error(err);
       this.disabled = false;
-      this.textContent = 'Recevoir mon estimation';
+      this.textContent = 'Envoyer ma demande';
       alert('Une erreur est survenue. Veuillez réessayer.');
     }
   });
